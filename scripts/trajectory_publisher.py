@@ -74,13 +74,14 @@ def RR():
 	scr = curses.initscr()
 	curses.start_color()
 	curses.use_default_colors()
+        published = False
 	for i in range(0, curses.COLORS):
 		curses.init_pair(i + 1, i, -1)
 		
 	while not rospy.is_shutdown():
 		if not published:
 			for i in range(len(links)):
-				if links[i].destination != os.environ['ROS_HOSTNAME']:
+				if links[i].destination != os.environ['ROS_MASTER_URI']:
 					trj_publisher.publish(create_fake_trj(links[i].destination))
 					published = True
 		print_dict(scr)

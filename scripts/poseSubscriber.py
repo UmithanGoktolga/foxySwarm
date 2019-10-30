@@ -32,16 +32,19 @@ def print_pose(scr, key, i):
 		color = curses.color_pair(125)
 	else:
 		color = curses.color_pair(77)
-	scr.addstr(i,0,"#|    {0}{1}||{2}|{3}|{4}|{5}|{6}|{7}|".format(frame, ' '*(16-len(frame)), toStr(px), toStr(py), toStr(pz), toStr(euler[0]), toStr(euler[1]), toStr(euler[2])))
-	scr.addstr(i,96,"{0}".format(toStr(deltat)), color)
-	scr.addstr(i,107,"|#")
+        try:
+	        scr.addstr(i,0,"#|    {0}{1}||{2}|{3}|{4}|{5}|{6}|{7}|".format(frame, ' '*(16-len(frame)), toStr(px), toStr(py), toStr(pz), toStr(euler[0]), toStr(euler[1]), toStr(euler[2])))
+	        scr.addstr(i,96,"{0}".format(toStr(deltat)), color)
+	        scr.addstr(i,107,"|#")
+        except curses.error:
+                pass
 
 
 def print_dict(scr):
 	scr.addstr(0,0,"#############################################################################################################")
 	scr.addstr(1,0,"###################                           FOXY_SWARM NETWORK                          ###################")
 	scr.addstr(2,0,"#############################################################################################################")
-	scr.addstr(3,0,"#|    ROS_HOSTNAME    ||     X     |     Y     |     Z     |   ROLL    |   PITCH   |    YAW    | Time Diff |#")
+	scr.addstr(3,0,"#|    ROS_URI    ||     X     |     Y     |     Z     |   ROLL    |   PITCH   |    YAW    | Time Diff |#")
 	scr.addstr(4,0,"#|---------------------------------------------------------------------------------------------------------|#")
 	if len(pose_dictionary) > 0:
 		i = 5

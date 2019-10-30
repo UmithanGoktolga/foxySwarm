@@ -21,11 +21,11 @@ echo ""
 printf "${RED}******************************************************************${NC}\n"
 printf "${RED}******************************************************************${NC}\n"
 echo "Configuring ~/.zshrc ..."
-echo "" | sudo tee --append ~/.zshrc
-echo "#FOXY_SWARM_CONFIGURATION" | sudo tee --append ~/.zshrc
-echo "export ROS_MASTER_URI=http://$ip:11311" | sudo tee --append ~/.zshrc
-echo "export ROS_HOSTNAME=$ip" | sudo tee --append ~/.zshrc
-echo "DONE."
+echo "" | sudo tee --append ~/.bashrc
+echo "#FOXY_SWARM_CONFIGURATION" | sudo tee --append ~/.bashrc
+echo "export ROS_MASTER_URI=http://$ip:11311" | sudo tee --append ~/.bashrc
+echo "export ROS_HOSTNAME=$ip" | sudo tee --append ~/.bashrc
+echo "DONE."....
 echo ""
 echo "Configuring /etc/network/interfaces..."
 echo "#FOXY_SWARM_CONFIGURATION" | sudo tee --append /etc/network/interfaces

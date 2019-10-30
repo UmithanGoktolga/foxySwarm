@@ -10,8 +10,8 @@ trj_init = False
 
 def trajectory_callback(trj):
 	global trajectory, trj_init
-	print trj.destination, os.environ['ROS_HOSTNAME'] 
-	if trj.destination == os.environ['ROS_HOSTNAME']:
+	print trj.destination, os.environ['ROS_MASTER_URI'] 
+	if trj.destination == os.environ['ROS_MASTER_URI']:
 		trajectory = trj
 		trj_init = True
 	
@@ -35,7 +35,7 @@ def RR():
 		print trj_init
 		if trj_init:
 			msg = String()
-			msg.data = os.environ['ROS_HOSTNAME']
+			msg.data = os.environ['ROS_MASTER_URI']
 			pub.publish(msg)
 		rospy.sleep(0.4)
 	
